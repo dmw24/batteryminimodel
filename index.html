@@ -59,7 +59,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; }
     body {
-      background: var(--white);
+      background: #f7f7f7; /* VERY LIGHT gray background */
       color: var(--slate-blue);
       font-family: Poppins, sans-serif;
       font-size: 15px;
@@ -77,13 +77,22 @@
       font-size: 3.2em;
       font-weight: 500;
       line-height: 1.2em;
+      position: relative;
+    }
+    header.container h1::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 1em;
+      background: var(--color_theme_accent);
+      margin-right: 10px;
+      vertical-align: middle;
     }
     header.container p.disclaimer {
       font-size: 0.9em;
       color: var(--dark-grey);
       margin: 0 0 1rem 0;
     }
-    /* Disclaimer text remains as one line */
     h2 {
       margin: 20px 0;
       font-size: 2.5em;
@@ -99,19 +108,18 @@
       border-bottom: 1px solid var(--grey-blue);
       padding-bottom: 0.5rem;
     }
-    /* Major group headers as plain text with toggle arrow */
+    /* Group titles (majors) styling without boxes, with toggle arrow and extra spacing */
     .group-title {
-      margin: 15px 0 5px 0;
+      margin: 15px 0 10px 0;
       font-size: 1.5em;
       font-weight: 500;
       cursor: pointer;
-      /* Add green block/bar decoration */
     }
     .group-title::before {
       content: "";
       display: inline-block;
-      width: 10px;
-      height: 10px;
+      width: 6px;
+      height: 1.2em;
       background: var(--color_theme_accent);
       margin-right: 8px;
       vertical-align: middle;
@@ -120,18 +128,22 @@
       content: "►";
       float: right;
       font-size: 0.8em;
+      vertical-align: middle;
     }
     .group-title.expanded::after {
       content: "▼";
     }
-    /* Default state: groups collapsed */
+    /* Default state: groups collapsed, plain grouping without grey background */
     .group .group-content { 
       display: none;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      /* Removed grey background and border styling */
+      padding-left: 0;
     }
     .group {
       margin-bottom: 20px;
     }
-    /* Add more spacing between fieldsets */
     fieldset {
       margin-bottom: 20px;
     }
@@ -243,7 +255,8 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: var(--background_contrast_1);
+      background: var(--white);
+      border-top: 1px solid #000;
       text-align: center;
       padding: 5px;
       font-size: 0.8em;
@@ -258,7 +271,7 @@
   <script src="https://unpkg.com/tippy.js@6"></script>
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
   <script>
-    // Set Chart.js default font family and size
+    // Set Chart.js default font family and size.
     Chart.defaults.font.family = 'Poppins, sans-serif';
     Chart.defaults.font.size = 15;
   </script>
@@ -463,6 +476,9 @@
     Created by <strong>Daan Walter</strong>, 2025
   </footer>
   
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
   <script>
     // Toggle group content display on click and update arrow.
     function toggleGroup(el) {
@@ -491,7 +507,7 @@
       });
     });
     
-    // Set Chart.js defaults.
+    // Set Chart.js default font family and size.
     Chart.defaults.font.family = 'Poppins, sans-serif';
     Chart.defaults.font.size = 15;
     
@@ -1010,4 +1026,5 @@
   </script>
 </body>
 </html>
+
 
